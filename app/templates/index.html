@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load humanize %}
+
+{% block content %}
+<div class='table-responsive'>
+   {% if product_list %}
+       <table id='table' class='table table-bordered table-striped'>
+           <thead>
+               <tr>
+                   <th>Product</th>
+                   <th>Quantity</th>
+                   <th>Price (shs)</th>
+                   <th>Date</th>
+               </tr>
+           </thead>
+           <tbody>
+               {% for product in product_list %}
+                   <tr>
+                       <td>{{ product.product }}</td>
+                       <td>{{ product.quantity }}</td>
+                       <td>{{ product.price }}</td>
+                       <td>{{ product.created_at }}</td>
+                   </tr>
+               {% endfor %}
+           </tbody>
+       </table> 
+   {% else %}
+       <p>No records found.</p> 
+   {% endif %}
+</div>
+{% endblock %}
